@@ -103,7 +103,7 @@ class MPR121(object):
         if c != 0x24:
            return False
         # Set threshold for touch and release to default values.
-        self.set_thresholds(12, 6)
+        self.set_thresholds(40, 3)
         # Configure baseline filtering control registers.
         self._i2c_retry(self._device.write8, MPR121_MHDR, 0x01)
         self._i2c_retry(self._device.write8, MPR121_NHDR, 0x01)
