@@ -95,7 +95,7 @@ def midiExample():
     #Setup the HAT
     cap=setup_capacitive_hat();
 
-    #Apply a shift (one octave) to the tones
+    #shift example to the tones (this line have no effect)
     octave=0
     notes_offset=[x+12*octave for x in notes]
 
@@ -117,9 +117,9 @@ def midiExample():
         		# First check if transitioned from not touched to touched.
         		if current_touched & pin_bit and not last_touched & pin_bit:
             			print '{0} touched!'.format(i)
-				#Here we will trigger the midi tones
+				#Here we will trigger the MIDI tones
 				if i == 11:
-					print "Changin instrument"
+					print "Changing instrument"
 					current_instrument+=1
 					current_instrument=current_instrument%len(instrument_array)
 					midi_out.set_instrument(instrument_array[current_instrument])
@@ -155,7 +155,7 @@ def midiExample():
                                                 octave=0
 
 					#We need shut down all the notes before change
-					#to avoid ""hang" notes
+					#to avoid "hang" notes
 					for i in notes_offset:
 						midi_out.note_off(i,127)
 
